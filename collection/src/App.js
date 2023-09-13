@@ -2,36 +2,32 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [addAmount, setAddAmount] = useState();
-  const [subtractAmount, setSubtractAmount] = useState();
+  const [addAmount, setAddAmount] = useState("");
+  const [subtractAmount, setSubtractAmount] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
-  const [disable, setdisable] = useState(true);
 
   useEffect(() => {
     const storedAmount = localStorage.getItem('totalAmount');
+    console.log(storedAmount)
     if (storedAmount) {
       setTotalAmount(parseInt(storedAmount));
     }
   }, []);
   const handleAddition = () => {
     let newTotal;
-    if(addAmount!=="" && subtractAmount!==""){
-      setdisable(true)
-
-    }
-    else{
-      setdisable(false);
       if(addAmount!==""){
-         newTotal = totalAmount + addAmount;
+         newTotal = parseInt(totalAmount) + parseInt(addAmount);
 
       }
       else{
-        newTotal = totalAmount - subtractAmount;
+        newTotal = parseInt(totalAmount) - (subtractAmount);
       }
 
+      console.log(newTotal,    localStorage.setItem('totalAmount', newTotal.toString())
+      )
     setTotalAmount(newTotal);
     localStorage.setItem('totalAmount', newTotal.toString());
-    }
+  
   };
   
   return (
@@ -53,24 +49,27 @@ function App() {
   </div>
   <div className="addamount">
     Add Amount:<br/>&nbsp;<label>
-      <input class="search-text" type="number"
+      <input className="search-text" type="number"
            value={addAmount}
-           onChange={(e) => setAddAmount(parseInt(e.target.value))}/>
+           onChange={(e) => setAddAmount(e.target.value)}/>
     </label>
   </div>
   <div className="addamount">
     Sub Amount:<br/>&nbsp;<label>
-      <input class="search-text" value={subtractAmount}
-            onChange={(e) => setSubtractAmount(parseInt(e.target.value))}/>
+      <input className="search-text" value={subtractAmount}  type="number"
+            onChange={(e) => setSubtractAmount(e.target.value)}/>
     </label>
   </div>
-  <button  type="button" disabled={disable} onClick={handleAddition}>Submit</button>
-
+  {console.log(addAmount!=="",subtractAmount!=="")}
+  <button  type="button"
+  className={(addAmount!=="" && subtractAmount!=="")?"disablebutton":"enablebutton"}
+  disabled={addAmount!=="" && subtractAmount!==""} onClick={handleAddition}>Submit</button><br/>
+<b style={{color:"red",fontSize:"10px"}}>{(addAmount!=="" && subtractAmount!=="")?"*At a time Enter only one Field Add/sub":""}</b>
 
 
     </div>
 
-        <div className="footer">
+        <div className="footerValue">
             <p> Developed <br/>by</p>
             J.Tamilarasan
         </div>
