@@ -12,7 +12,7 @@ localStorage.setItem('MYITEM',"TAMILA")
 
 }, []);
   useEffect(() => {
-    const sggs=localStorage.getItem('MYITEM',"TAMILA")
+    const sggs=localStorage.getItem('MYITEM',"TAMILA2")
     if(sggs){
       setData(sggs)
     }
