@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Popins',sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+background-size: 400% 400%;
+animation:  animatebg 2s ease infinite;
+
 }
 
 .App-logo {
@@ -14,18 +33,138 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+nav{
+  margin-top: 10px;
+  text-align: center;
+}
+.card{
+  width: 320px;
+  height: 250px;
+  background: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 70px 10px 10px 30px;
+
+}
+.totalname{
+  color: black;
+  padding: 10px;
+}
+.addamount{
+  color: black;
+  padding: 10px;
+  font-size: 18px;
+
+
+}
+.subamount{
+  color: black;
+  padding: 10px;
+  font-size: 18px;
+
+
+}
+
+.search-text{
+  padding: 10px;
+  outline: none;
+  border: 1px solid #ff4757;
+  border-radius: 5px 0 0 5px;
+  background-color: rgba(255,71,87,0.1);
+}
+.search-text::placeholder{
+  color: #ff4757;
+}
+.search-text:focus{
+  background-color: white;
+
+}
+.search-text2{
+  padding: 10px;
+  outline: none;
+  border: 1px solid #ff4757;
+  border-radius: 5px 0 0 5px;
+  background-color: rgba(255,71,87,0.1);
+  cursor: pointer;
+}
+.search-text2::placeholder{
+  color: #ff4757;
+}
+.search-text2:focus{
+  background-color: white;
+
+}
+
+
+button{
+  padding: 9px 25px;
+  background: rgba(0,136,169,1);
+  border: none;
+  color: #fff;
+  border-radius: 50px;
+  transform: 0.3s;
+  background: rgba(0,136,169,0.8);
+  cursor: pointer;
+
+}
+
+
+
+nav ul{
+  display: inline-block;
+  list-style-type: none;
+  transform: skew(-25deg);
+}
+
+nav ul li{
+  background-color: white;
+  float: left;
+  text-transform: uppercase;
+  color: #555;
+  border-right: 1px solid #eee;
+  font-weight: 400;
+  box-shadow: 1.95px 1.95px 2.5px rgba(0,0,0,1);
+  transition: all 0.2s linear;
+}
+nav ul li:hover{
+  background-color: #0984e3;
+  color: #fff;
+}
+a{
+  /* inhert parent eduthukom */
+  color: inherit;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  transform: skew(25deg);
+}
+/* top-left top-right bottom-right bottom-left */
+nav ul li:first-child{
+  border-radius: 7px 0 0 7px;
+}
+nav ul li:last-child{
+  border-radius: 0 7px  7px 0;
 }
 
 @keyframes App-logo-spin {
