@@ -7,7 +7,7 @@ function App() {
 
 
   useEffect(() => {
-localStorage.setItem('MYITEM',"TAMILA")
+localStorage.setItem('MYITEM',"TAMILA2")
 
 
 }, []);
