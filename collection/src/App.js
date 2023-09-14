@@ -34,7 +34,7 @@ function App() {
 
 
     }
-    else if(isPasswordCorrect==false){
+    else if(isPasswordCorrect===false){
       alert("Please is incorrect")
 
 
