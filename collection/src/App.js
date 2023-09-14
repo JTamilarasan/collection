@@ -5,6 +5,11 @@ function App() {
   const [addAmount, setAddAmount] = useState("");
   const [subtractAmount, setSubtractAmount] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
+  const [password, setPassword] = useState('');
+  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
+  const correctPassword = {name:"gopi"}; // Replace with your actual secret password
+
+  
 
   useEffect(() => {
     const storedAmount = localStorage.getItem('totalAmount');
@@ -13,8 +18,29 @@ function App() {
       setTotalAmount(parseInt(storedAmount));
     }
   }, []);
+
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    console.log(newPassword,correctPassword.name)
+
+    setIsPasswordCorrect(newPassword === correctPassword.name);
+    setPassword(newPassword);
+  };
   const handleAddition = () => {
     let newTotal;
+    if(password==="")
+    {
+      alert("Please Enter the password")
+
+
+    }
+    else if(isPasswordCorrect==false){
+      alert("Please is incorrect")
+
+
+
+    }
+else{
       if(addAmount!==""){
          newTotal = parseInt(totalAmount) + parseInt(addAmount);
 
@@ -23,12 +49,26 @@ function App() {
         newTotal = parseInt(totalAmount) - (subtractAmount);
       }
 
-      console.log(newTotal,    localStorage.setItem('totalAmount', newTotal.toString())
-      )
     setTotalAmount(newTotal);
     localStorage.setItem('totalAmount', newTotal.toString());
+    }
+    
   
   };
+  const handleinputchange=(e,type)=>{
+    const {value}=e.target;
+      let newvalue=value.replace(/[^0-9]/g,"");
+       if(type==="add"){
+        setAddAmount(newvalue)
+
+      }
+      else{
+        setSubtractAmount(newvalue)
+
+      }
+
+
+  }
   
   return (
     <div className="App">
@@ -42,36 +82,47 @@ function App() {
             <li><a href="https://www.w3schools.com">Amount List</a></li>
             <li><a href="https://www.w3schools.com">Add Guys Amount</a></li>
         </ul>
+
+
 </nav>
+
+<div className="Cotainer">
 <div className="card">
   <div className="totalname">
     Total Amount: {totalAmount}
   </div>
   <div className="addamount">
     Add Amount:<br/>&nbsp;<label>
-      <input className="search-text" type="number"
+      <input className="search-text" type="text"
            value={addAmount}
-           onChange={(e) => setAddAmount(e.target.value)}/>
+           onChange={(e)=>handleinputchange(e,"add")}/>
     </label>
   </div>
   <div className="addamount">
     Sub Amount:<br/>&nbsp;<label>
-      <input className="search-text" value={subtractAmount}  type="number"
-            onChange={(e) => setSubtractAmount(e.target.value)}/>
+      <input type="text" className="search-text" value={subtractAmount}  
+            onChange={(e)=>handleinputchange(e,"sub")}/>
+    </label></div>
+    <div className="addamount">
+    Pass Word:<br/>&nbsp;<label>
+      <input type="password" className="search-text" value={password}
+        onChange={handlePasswordChange}
+           />
     </label>
+
   </div>
-  {console.log(addAmount!=="",subtractAmount!=="")}
   <button  type="button"
   className={(addAmount!=="" && subtractAmount!=="")?"disablebutton":"enablebutton"}
-  disabled={addAmount!=="" && subtractAmount!==""} onClick={handleAddition}>Submit</button><br/>
-<b style={{color:"red",fontSize:"10px"}}>{(addAmount!=="" && subtractAmount!=="")?"*At a time Enter only one Field Add/sub":""}</b>
+  disabled={addAmount!=="" && subtractAmount!=="" } onClick={handleAddition}>Submit</button><br/>
+<b style={{color:"red",fontSize:"10px"}}>{(addAmount!=="" && subtractAmount!=="")?"*At a time Enter only one Field Add orsub":""}</b>
 
 
     </div>
+    </div>
 
         <div className="footerValue">
-            <p> Developed <br/>by</p>
-            J.Tamilarasan
+            <p> Developed by</p><span style={{display:"inline"}}>            J.Tamilarasan
+</span>
         </div>
       </header>
     </div>

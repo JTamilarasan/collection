@@ -18,6 +18,7 @@
   background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 background-size: 400% 400%;
 animation:  animatebg 2s ease infinite;
+position: relative;
 
 }
 
@@ -42,32 +43,36 @@ animation:  animatebg 2s ease infinite;
   color: #61dafb;
 }
 .footerValue{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+  color: white;
+  margin-top: 420px;
 }
 nav{
   margin-top: 10px;
   text-align: center;
 }
+.Cotainer{
+  position: relative;
+}
 .card{
   width: 320px;
-  height: 300px;
+  height: 359px;
   background: white;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
   font-size: 25px;
   font-weight: 700;
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%,10%);
+
+
 
 }
 .totalname{
   color: black;
   padding: 10px;
+  display: block;
 }
 .addamount{
   color: black;
@@ -124,6 +129,7 @@ nav{
   transform: 0.3s;
   background: rgba(0,136,169,0.8);
   cursor: pointer;
+  margin-top: 10px;
 
 }
 .disablebutton{
@@ -135,6 +141,8 @@ nav{
   transform: 0.3s;
   background: rgba(231, 234, 235, 0.8);
   cursor: none;
+  margin-top: 10px;
+
 
 
 }
