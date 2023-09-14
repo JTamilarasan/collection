@@ -60,6 +60,13 @@ else{
         console.log(a)
         a.Name = handlevalue;
         a.Amount = parseInt(addamount)+parseInt(a.Amount);
+        const storedAmount = localStorage.getItem('totalAmount');
+
+        let  newTotal = parseInt(storedAmount) + parseInt(a.Amount);
+ 
+ 
+         localStorage.setItem('totalAmount', parseInt(newTotal));
+ 
 
         history("/collection")
 }

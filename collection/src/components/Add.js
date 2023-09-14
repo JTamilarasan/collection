@@ -56,6 +56,13 @@ else{
 
         let a = handlevalue;
         let b = addamount;
+        const storedAmount = localStorage.getItem('totalAmount');
+
+       let  newTotal = parseInt(storedAmount) + parseInt(b);
+
+
+        localStorage.setItem('totalAmount', parseInt(newTotal));
+
 
          Employees.push({ id: uniqueId, Name: a, Amount: b });
 

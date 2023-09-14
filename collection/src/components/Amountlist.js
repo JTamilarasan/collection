@@ -65,7 +65,7 @@ const Amountlist = () => {
                 <th>Edit</th>
             </tr>
         </thead>
-        <tbody className="table-body">
+        <tbody>
         {
                             pacientes && pacientes.length > 0
                                 ?

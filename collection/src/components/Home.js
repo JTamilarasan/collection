@@ -51,8 +51,12 @@ else{
       }
 
     setTotalAmount(newTotal);
-    localStorage.setItem('totalAmount', newTotal.toString());
+    localStorage.setItem('totalAmount', parseInt(newTotal));
     setAddAmount("")
+    setSubtractAmount("");
+    setSubtractAmount("")
+
+
     }
     
   
@@ -64,6 +68,11 @@ else{
         setAddAmount(newvalue)
 
       }
+      if(type==="sub"){
+        setSubtractAmount(newvalue)
+
+      }
+
       else{
         setSubtractAmount("");
         setSubtractAmount("")
