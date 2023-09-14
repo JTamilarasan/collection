@@ -10,21 +10,11 @@ import { FaWindowClose } from "react-icons/fa";
 const Add = () => {
     const [handlevalue, sethandlevalue] = useState("");
     const [addamount, setaddamount] = useState("");
-    const [password, setPassword] = useState('');
-    const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
-    const correctPassword = {name:"gopi"}; // Replace with your actual secret password
   
   
 
 
     let history = useNavigate()
-    const handlePasswordChange = (event) => {
-        const newPassword = event.target.value;
-        console.log(newPassword,correctPassword.name)
-    
-        setIsPasswordCorrect(newPassword === correctPassword.name);
-        setPassword(newPassword);
-      };
     
     const handleAddition = (e) => {
         e.preventDefault();
@@ -37,18 +27,6 @@ else if(addamount===""){
 
 
 }
-        else if(password==="")
-        {
-          alert("Please Enter the password")
-    
-    
-        }
-        else if(isPasswordCorrect===false){
-          alert("Please is incorrect")
-    
-    
-    
-        }
 else{    
 
         const ids = uuid();
@@ -101,14 +79,6 @@ else{
       <input type="text" className="search-text" value={addamount}  
             onChange={(e)=>handleaddamount(e)}/>
     </label></div>
-    <div className="addamount">
-    Pass Word:<br/>&nbsp;<label>
-      <input type="password" className="search-text" value={password}
-        onChange={handlePasswordChange}
-           />
-    </label>
-
-  </div>
 
   <button  type="button" className='enablebutton2'
   

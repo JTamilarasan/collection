@@ -10,19 +10,9 @@ const Edit = () => {
     const [handlevalue, sethandlevalue] = useState("");
     const [addamount, setaddamount] = useState("");
     const [id, setId] = useState("")
-    const [password, setPassword] = useState('');
-    const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
-    const correctPassword = {name:"gopi"}; // Replace with your actual secret password
 
 
     let history = useNavigate()
-    const handlePasswordChange = (event) => {
-        const newPassword = event.target.value;
-        console.log(newPassword,correctPassword.name)
-    
-        setIsPasswordCorrect(newPassword === correctPassword.name);
-        setPassword(newPassword);
-      };
 
 
     var index = Employees.map(function (e) {
@@ -41,19 +31,6 @@ const Edit = () => {
         
         
         }
-        else if(password==="")
-        {
-          alert("Please Enter the password")
-    
-    
-        }
-        else if(isPasswordCorrect===false){
-          alert("Please is incorrect")
-    
-    
-    
-        }
-
 else{        
 
         let a = Employees[index];
@@ -62,7 +39,7 @@ else{
         a.Amount = parseInt(addamount)+parseInt(a.Amount);
         const storedAmount = localStorage.getItem('totalAmount');
 
-        let  newTotal = parseInt(storedAmount) + parseInt(a.Amount);
+        let  newTotal = parseInt(storedAmount) + parseInt(addamount);
  
  
          localStorage.setItem('totalAmount', parseInt(newTotal));
@@ -75,7 +52,6 @@ else{
     useEffect(() => {
         console.log(localStorage.getItem("Amount"),"sjkkjs")
         sethandlevalue(localStorage.getItem("Name"))
-        setaddamount(localStorage.getItem("Amount"))
         setId(localStorage.getItem("Id"))
     }, [])
 
@@ -101,14 +77,6 @@ else{
      <input type="number" className="search-text"  value={addamount}  onChange={((e) => setaddamount(e.target.value))}/>
     </label></div>
 
-    <div className="addamount">
-    Pass Word:<br/>&nbsp;<label>
-      <input type="password" className="search-text" value={password}
-        onChange={handlePasswordChange}
-           />
-    </label>
-
-  </div>
 
                 <button className='enablebutton2' onClick={(e) => handleSubmit(e)} type="button">Update</button>
 
