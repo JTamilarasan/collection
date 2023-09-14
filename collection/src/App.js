@@ -1,131 +1,23 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Add from './components/Add';
+import Amountlist from './components/Amountlist';
+
+import Edit from './components/Edit';
+
 
 function App() {
-  const [addAmount, setAddAmount] = useState("");
-  const [subtractAmount, setSubtractAmount] = useState("");
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [password, setPassword] = useState('');
-  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
-  const correctPassword = {name:"gopi"}; // Replace with your actual secret password
-
-  
-
-  useEffect(() => {
-    const storedAmount = localStorage.getItem('totalAmount');
-    console.log(storedAmount)
-    if (storedAmount) {
-      setTotalAmount(parseInt(storedAmount));
-    }
-  }, []);
-
-  const handlePasswordChange = (event) => {
-    const newPassword = event.target.value;
-    console.log(newPassword,correctPassword.name)
-
-    setIsPasswordCorrect(newPassword === correctPassword.name);
-    setPassword(newPassword);
-  };
-  const handleAddition = () => {
-    let newTotal;
-    if(password==="")
-    {
-      alert("Please Enter the password")
-
-
-    }
-    else if(isPasswordCorrect===false){
-      alert("Please is incorrect")
-
-
-
-    }
-else{
-      if(addAmount!==""){
-         newTotal = parseInt(totalAmount) + parseInt(addAmount);
-
-      }
-      else{
-        newTotal = parseInt(totalAmount) - (subtractAmount);
-      }
-
-    setTotalAmount(newTotal);
-    localStorage.setItem('totalAmount', newTotal.toString());
-    }
-    
-  
-  };
-  const handleinputchange=(e,type)=>{
-    const {value}=e.target;
-      let newvalue=value.replace(/[^0-9]/g,"");
-       if(type==="add"){
-        setAddAmount(newvalue)
-
-      }
-      else{
-        setSubtractAmount(newvalue)
-
-      }
-
-
-  }
-  
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 style={{color: "white",fontSize:"42px",lineHeight:"57px", 
-}}>ACC</h1>
-        <b  style={{color: "white",fontSize:"30px",lineHeight:"57px"}} >Collection List</b>
+    <>
+      <Routes>
+        <Route path='/collection' exact element={<Home />} />
+        <Route path='/create' exact element={<Add />} />
+        <Route path='/amountlist' exact element={<Amountlist />} />
 
-        <nav>
-        <ul>
-            <li><a href="https://www.w3schools.com">Amount List</a></li>
-            <li><a href="https://www.w3schools.com">Add Guys Amount</a></li>
-        </ul>
-
-
-</nav>
-
-<div className="Cotainer">
-<div className="card">
-  <div className="totalname">
-    Total Amount: {totalAmount}
-  </div>
-  <div className="addamount">
-    Add Amount:<br/>&nbsp;<label>
-      <input className="search-text" type="text"
-           value={addAmount}
-           onChange={(e)=>handleinputchange(e,"add")}/>
-    </label>
-  </div>
-  <div className="addamount">
-    Sub Amount:<br/>&nbsp;<label>
-      <input type="text" className="search-text" value={subtractAmount}  
-            onChange={(e)=>handleinputchange(e,"sub")}/>
-    </label></div>
-    <div className="addamount">
-    Pass Word:<br/>&nbsp;<label>
-      <input type="password" className="search-text" value={password}
-        onChange={handlePasswordChange}
-           />
-    </label>
-
-  </div>
-  <button  type="button"
-  className={(addAmount!=="" && subtractAmount!=="")?"disablebutton":"enablebutton"}
-  disabled={addAmount!=="" && subtractAmount!=="" } onClick={handleAddition}>Submit</button><br/>
-<b style={{color:"red",fontSize:"10px"}}>{(addAmount!=="" && subtractAmount!=="")?"*At a time Enter only one Field Add orsub":""}</b>
-
-
-    </div>
-    </div>
-
-        <div className="footerValue">
-            <p> Developed by</p><span style={{display:"inline"}}>            J.Tamilarasan
-</span>
-        </div>
-      </header>
-    </div>
+        <Route path='/edit' exact element={<Edit />} />
+      </Routes>
+    </>
   );
 }
 

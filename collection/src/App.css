@@ -49,6 +49,9 @@ position: relative;
 nav{
   margin-top: 10px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .Cotainer{
   position: relative;
@@ -69,6 +72,23 @@ nav{
 
 
 }
+.card2{
+  width: 320px;
+  height: 380px;
+  background: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  left: 45%;
+  margin-right: -50%;
+  transform: translate(-50%,52%);
+
+
+
+}
+
 .totalname{
   color: black;
   padding: 10px;
@@ -132,6 +152,19 @@ nav{
   margin-top: 10px;
 
 }
+.enablebutton2{
+  padding: 9px 25px;
+  background: rgba(0,136,169,1);
+  border: none;
+  color: #fff;
+  border-radius: 50px;
+  transform: 0.3s;
+  background: rgba(0,136,169,0.8);
+  cursor: pointer;
+  margin-left: 10px;
+
+}
+
 .disablebutton{
   padding: 9px 25px;
   background: rgba(0,136,169,1);
@@ -149,7 +182,7 @@ nav{
 
 
 nav ul{
-  display: inline-block;
+  display: inline-flex;
   list-style-type: none;
   transform: skew(-25deg);
 }
@@ -163,18 +196,25 @@ nav ul li{
   font-weight: 400;
   box-shadow: 1.95px 1.95px 2.5px rgba(0,0,0,1);
   transition: all 0.2s linear;
+  font-size: 10px;
 }
 nav ul li:hover{
   background-color: #0984e3;
   color: #fff;
 }
-a{
+a {
   /* inhert parent eduthukom */
   color: inherit;
   display: block;
-  padding: 10px 20px;
   text-decoration: none;
   transform: skew(25deg);
+}
+a,Link{
+  padding: 5px 5px 5px 8px;
+  font-size: 1rem;
+
+
+
 }
 /* top-left top-right bottom-right bottom-left */
 nav ul li:first-child{
